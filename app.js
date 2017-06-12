@@ -6,35 +6,22 @@ console.log ('watch out!');
 });
 
 
-
-
-$(document).ready(function(){
- var leftAmount = 0;
- var topAmount = 0;
-
-  $(document).keydown(function(theEvent){
-    theEvent.preventDefault();
-
-// up arrow
-    if (theEvent.which === 38  ){
-      topAmount -= 10;
-    }
-    // right arrow
-    else if (theEvent.which === 39 ){
-      leftAmount += 10;
-    }
-    // down arrow
-    else if (theEvent.which === 40 ){
-    topAmount += 10;
-    }
-    // left arrow
-    else if (theEvent.which === 37 ){
-      leftAmount -= 10;
+$(document).ready(function () {
+  $(document).keydown(function (theEvent) {
+    if (
+        theEvent.which === 39 ||
+        theEvent.which === 37) {
+      theEvent.preventDefault();
     }
 
-    $('#literally-everything').css ('left', leftAmount + 'px');
-    $('#literally-everything').css ('top', topAmount + 'px');
-    $('#literally-everything').css ('position','relative');
+    // right arrow key
+    else if (theEvent.which === 39) {
+      krabsX += 5;
+    }
 
+    // left arrow key
+    else if (theEvent.which === 37) {
+      krabsX -= 5;
+    }
   });
 });

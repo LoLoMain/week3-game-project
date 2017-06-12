@@ -19,13 +19,21 @@ var c = canvas.getContext('2d');
 
 
 var krabs = new Image();   // Create new img element
-krabs.addEventListener('load', function() {
-  // execute drawImage statements here
-
 var krabsX = 500 ;
 var krabsY = 300;
 
-c.drawImage(krabs, krabsX, krabsY);
+function draw(){
+  c.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-}, false);
+
+c.drawImage(krabs, krabsX, krabsY);
+}
+
 krabs.src = 'images/mrkrabs.png'; // Set source path
+
+
+setInterval(function () {
+krabsX +=5;
+
+  draw();
+}, 33);
