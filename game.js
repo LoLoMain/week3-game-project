@@ -1,11 +1,3 @@
-// JS file for game logic
-
-console.log ('watch out!');
-
-// var score = 0;
-// var counter = 60;  // set an interval to count down
-
-
 
 // to connect to html
 var canvas = document.querySelector('canvas');
@@ -31,9 +23,16 @@ c.drawImage(krabs, krabsX, krabsY);
 
 krabs.src = 'images/mrkrabs.png'; // Set source path
 
-
 setInterval(function () {
-krabsX +=5;
+ if (krabsX < window.innerWidth){
+   krabsX +=5;
 
-  draw();
+     draw();
+ }
+
+ else {
+   krabsX = -krabsX;
+ }
+
+
 }, 33);
