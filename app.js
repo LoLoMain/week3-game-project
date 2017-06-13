@@ -15,13 +15,13 @@ $(document).ready(function () {
     }
 
     // right arrow key
-    else if (theEvent.which === 39) {
-      krabsX += 5;
+    if (theEvent.which === 39) {
+      krabsX += 15;
     }
 
     // left arrow key
     else if (theEvent.which === 37) {
-      krabsX -= 5;
+      krabsX -= 15;
     }
   });
 });
