@@ -22,16 +22,21 @@ function draw(){
   c.drawImage(krabs, krabsX, krabsY);
 }
 
+// to create var randomX
+
+var randomX = Math.floor(Math.random() * 650 + 1);
+var random1X = Math.floor(Math.random() * 650 + 1);
+
 // Anvil position
 
 var anvil = new Image ();
-anvil.src ='images/anvil.png';
-var anvilX = 300; //this will probably need to change later
+anvil.src ='images/anvil2.png';
+var anvilX = randomX; //this will probably need to change later
 var anvilY = 1;
 
 // put this inside draw function
 function drawAnvil(){
- anvilY += 5;
+ anvilY += 7;
  // c.clearRect(0, 0, window.innerWidth, window.innerHeight);
  c.drawImage(anvil, anvilX, anvilY);
 }
@@ -39,8 +44,8 @@ function drawAnvil(){
  // Money position
 
 var money = new Image ();
-money.src ='images/moneystack.png';
-var moneyX = 500; //this will probably need to change later
+money.src ='images/moneystack2.png';
+var moneyX = random1X; //this will probably need to change later
 var moneyY = 1;
 
 // put this inside draw function and clearRect
@@ -50,14 +55,44 @@ function drawMoney(){
   c.drawImage(money, moneyX, moneyY);
 }
 
+function drawRandom(){
+var fallingItems =[];
+var gameObjects = [drawMoney(),drawAnvil()];
+fallingItems.push(gameObjects[Math.floor(Math.random()*gameObjects.length)]);
+
+return fallingItems;
+
+}
+
+
 // Drawing of Images
 setInterval(function () {
-
- drawMoney();
+drawRandom();
+ // drawMoney();
  draw();
- drawAnvil();
+ // drawAnvil();
 
 }, 100);
+
+
+
+//  var fallingItems = [];
+//  var gameObjects = ["coins","anvils"];
+//  fallingItems.push(gameObjects[Math.floor(Math.random()*gameObjects.length)]);
+//  //  this needs to go into a draw function
+//  //  need to create the items and have them redrawn with different y
+
+
+
+
+
+
+// --------------------------------------------------------------------
+// Collision Detection
+function collision(){
+
+}
+
 
 // ---------------------------------------------------------------------
 // timing info
@@ -106,11 +141,7 @@ function timer()
 //  // -------------------------------------------------
 //  // Game Functions
 //
-//  var fallingItems = [];
-//  var gameObjects = ["coins","anvils"];
-//  fallingItems.push(gameObjects[Math.floor(Math.random()*gameObjects.length)]);
-//  //  this needs to go into a draw function
-//  //  need to create the items and have them redrawn with different y
+
 //
 //
 //  var catchGame = {
