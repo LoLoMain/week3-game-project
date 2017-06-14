@@ -1,89 +1,76 @@
 
-// to connect to html
+//  to connect to html
 var canvas = document.querySelector('canvas');
 // to make full width of screen
-canvas.width = 800;
+canvas.width = 850;
 canvas.height = 600;
 
 // context variable (abbrev.)
 var c = canvas.getContext('2d');
 
 
-// Mr. Krabs Position
-
+// Images
 var krabs = new Image();   // Create new img element
-
 krabs.src = 'images/mrkrabs.png'; // Set source path
-var krabsX = 500 ;
+var anvil = new Image ();
+anvil.src ='images/anvil2.png';
+var money = new Image ();
+money.src ='images/moneystack2.png';
+
+// Mr Krabs Position
+var krabsX = 500;
 var krabsY = 400;
+
+// Creating Random Items
+var fallingItems = [];
+var availableItems = [anvil, money];
+
+function createObject (){
+  var randomX = Math.floor(Math.random() * 650) + 1;
+  var objectIndex = Math.floor(Math.random() * availableItems.length);
+  var objectInfo = {
+    x: randomX,
+    y: 1,
+    image: availableItems[objectIndex] };
+
+  fallingItems.push(objectInfo);
+}
+
+function drawRandom(){
+  c.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  fallingItems.forEach(function(element){
+   c.drawImage(element.image, element.x, element.y);
+    element.y += 7;
+  });
+}
 
 function draw(){
   // c.clearRect(30, 5, window.innerWidth, window.innerHeight);
   c.drawImage(krabs, krabsX, krabsY);
 }
 
-// to create var randomX
-
-var randomX = Math.floor(Math.random() * 650 + 1);
-var random1X = Math.floor(Math.random() * 650 + 1);
-
-// Anvil position
-
-var anvil = new Image ();
-anvil.src ='images/anvil2.png';
-var anvilX = randomX; //this will probably need to change later
-var anvilY = 1;
-
-// put this inside draw function
-function drawAnvil(){
- anvilY += 7;
- // c.clearRect(0, 0, window.innerWidth, window.innerHeight);
- c.drawImage(anvil, anvilX, anvilY);
-}
-
- // Money position
-
-var money = new Image ();
-money.src ='images/moneystack2.png';
-var moneyX = random1X; //this will probably need to change later
-var moneyY = 1;
-
-// put this inside draw function and clearRect
-function drawMoney(){
-  moneyY += 5;
-  c.clearRect(0, 0, window.innerWidth, window.innerHeight);
-  c.drawImage(money, moneyX, moneyY);
-}
-
-function drawRandom(){
-var fallingItems =[];
-var gameObjects = [drawMoney(),drawAnvil()];
-fallingItems.push(gameObjects[Math.floor(Math.random()*gameObjects.length)]);
-
-return fallingItems;
-
-}
 
 
-// Drawing of Images
+// Drawing of images
+
+// var stopDraw =
 setInterval(function () {
-drawRandom();
- // drawMoney();
- draw();
- // drawAnvil();
+                // if (count >=1) {
+                  createObject();
+                // else {
+                //   clearInterval(stopDraw);
+                // }
 
-}, 100);
-
-
-
-//  var fallingItems = [];
-//  var gameObjects = ["coins","anvils"];
-//  fallingItems.push(gameObjects[Math.floor(Math.random()*gameObjects.length)]);
-//  //  this needs to go into a draw function
-//  //  need to create the items and have them redrawn with different y
+}, 2500);
 
 
+  setInterval(function () {
+    drawRandom();
+   // drawMoney();
+   draw();
+   // drawAnvil();
 
+ }, 100);
 
 
 
@@ -109,35 +96,36 @@ function timer()
      return;
   }
 
- document.getElementById("timer").innerHTML=count + " secs"; // watch for spelling
+ document.getElementById("timer").innerHTML=count + " secs";
+// watch for spelling
 }
 // ---------------------------------------------------------------------
 // --------------------------------------------------------------------
 //  Constructor Functions for Game Objects
 
-// var lives = 3;
-// var userScore = 0;
-//
-//   function GameObject(nameParam, pointsParam) {
-//   this.name = nameParam;
-//   this.points = pointsParam;
-// }
-//
-// GameObject.prototype.scoreEffect = function (){
-//   userScore += this.pointsParam;
-// };
-//
-//
-// function Anvil (nameParam, pointsParam) {
-//   GameObject.call(this,nameParam, pointsParam);
-// }
-//
-// Anvil.prototype = Object.create(GameObject.prototype);
-//     this.livesEffect = function () {
-//       lives -= 1;
-//     };
-//
-//
+var lives = 3;
+var userScore = 0;
+
+  function GameObject(nameParam, pointsParam) {
+  this.name = nameParam;
+  this.points = pointsParam;
+}
+
+    GameObject.prototype.scoreEffect = function (){
+      userScore += this.pointsParam;
+    };
+
+
+  function Anvil (nameParam, pointsParam) {
+    GameObject.call(this,nameParam, pointsParam);
+  }
+
+    Anvil.prototype = Object.create(GameObject.prototype);
+        this.livesEffect = function () {
+          lives -= 1;
+        };
+
+
 //  // -------------------------------------------------
 //  // Game Functions
 //
