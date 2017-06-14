@@ -12,10 +12,22 @@ var c = canvas.getContext('2d');
 // Images
 var krabs = new Image();   // Create new img element
 krabs.src = 'images/mrkrabs.png'; // Set source path
-var anvil = new Image ();
-anvil.src ='images/anvil2.png';
-var money = new Image ();
-money.src ='images/moneystack2.png';
+
+var anvil = {
+  image: new Image (),
+  width: 162,
+  height: 121,
+  type: 'bad'
+};
+anvil.image.src ='images/anvil2.png';
+
+var money = {
+  image: new Image (),
+  width: 103,
+  height: 58,
+  type: 'good'
+};
+money.image.src ='images/moneystack2.png';
 
 // Mr Krabs Position
 var krabsX = 500;
@@ -23,6 +35,7 @@ var krabsY = 400;
 
 // Creating Random Items
 var fallingItems = [];
+var availableItems = [money];
 var availableItems = [anvil, money];
 
 function createObject (){
@@ -31,7 +44,7 @@ function createObject (){
   var objectInfo = {
     x: randomX,
     y: 1,
-    image: availableItems[objectIndex] };
+    object: availableItems[objectIndex] };
 
   fallingItems.push(objectInfo);
 }
@@ -39,8 +52,24 @@ function createObject (){
 function drawRandom(){
   c.clearRect(0, 0, window.innerWidth, window.innerHeight);
   fallingItems.forEach(function(element){
-   c.drawImage(element.image, element.x, element.y);
+    c.drawImage(element.object.image, element.x, element.y);
     element.y += 7;
+    // check element v krab collision
+
+    if (element.y + element.object.height > krabsY &&
+    element.x < krabsX && krabsX < element.x + element.object.width ){
+        // if (element.object.type === 'good'){
+        //   // add points to score
+        // }
+        // else{
+        //   // lose life
+        // }
+
+      console.log('Hit!'); // replace with score update
+    }
+    else{
+      console.log('Miss!');
+    }
   });
 }
 
@@ -54,14 +83,15 @@ function draw(){
 // Drawing of images
 
 // var stopDraw =
-setInterval(function () {
+setTimeout(function () {
+// setInterval(function () {
                 // if (count >=1) {
                   createObject();
                 // else {
                 //   clearInterval(stopDraw);
                 // }
 
-}, 2500);
+}, 3500);
 
 
   setInterval(function () {
