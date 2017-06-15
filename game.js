@@ -113,7 +113,7 @@ var stopDraw = setInterval(function () {
 
  }, 100);
 
- //
+
  // function gameOver(){
  //    if (lives === 0){
  //      $('#gameover').show();

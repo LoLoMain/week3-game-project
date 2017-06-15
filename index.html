@@ -3,25 +3,41 @@
    <head>
      <meta charset="utf-8">
      <title>Mr. Krabs Coin Catch</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+     crossorigin="anonymous">
      <link href="https://fonts.googleapis.com/css?family=Chewy" rel="stylesheet">
      <link rel="stylesheet" href="game.min.css">
    </head>
    <body>
 
-
+   <div class= "container">
     <!-- Game Information  -->
-     <div class="gameInfo">
-          <p>Time Remaining</p>
-          <span id="timer"></span>
-          <p>Score:</p>
-          <span id="score"> 0 </span>
-          <p>Lives:</p>
-          <span id="life">5</span>
+    <div class="row">
+      <h1 id="title"> Mr. Krab's Coin Catch </h1>
+    </div>
+    <div class ="row">
+       <!-- <div class="gameInfo"> -->
+         <div class="col-md-4">
+            <p>Time Remaining</p>
+            <span id="timer"></span>
+          </div>
+          <div class="col-md-4">
+            <p>Score:</p>
+            <span id="score"> 0 </span>
+          </div>
+          <div class="col-md-4">
+            <p>Lives:</p>
+            <span id="life">5</span>
+          </div>
+      </div>
     </div>
 
-
-     <canvas id='GameCanvas'></canvas>
-
+    <div class ="container">
+      <!-- <div class = "container-fluid"> -->
+       <canvas id='canvasArea'></canvas>
+     <!-- </div> -->
+    </div>
     <script
           src="https://code.jquery.com/jquery-3.2.1.js"
           integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="

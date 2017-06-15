@@ -1,3 +1,15 @@
+// $(document).ready(function () {
+//
+//     $(".StartButton").click(function () {
+//         $(".SplashScreen").hide();
+//         $(".FinishScreen").hide();
+//         $("#canvasArea").show();
+//         // init();
+//
+//     });
+//   });
+
+
 
 $(document).ready(function () {
   $(document).keydown(function (theEvent) {
