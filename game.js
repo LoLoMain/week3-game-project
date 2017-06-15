@@ -15,16 +15,16 @@ krabs.src = 'images/mrkrabs.png'; // Set source path
 
 var anvil = {
   image: new Image (),
-  width: 162,
-  height: 121,
+  width: 160,
+  height: 118,
   type: 'bad'
 };
 anvil.image.src ='images/anvil2.png';
 
 var money = {
   image: new Image (),
-  width: 103,
-  height: 58,
+  width: 100,
+  height: 55,
   type: 'good'
 };
 money.image.src ='images/moneystack2.png';
@@ -49,27 +49,43 @@ function createObject (){
   fallingItems.push(objectInfo);
 }
 
+var lives = 5;
+var userScore = 0;
+
 function drawRandom(){
+  var toRemove =[];
   c.clearRect(0, 0, window.innerWidth, window.innerHeight);
   fallingItems.forEach(function(element){
     c.drawImage(element.object.image, element.x, element.y);
     element.y += 7;
+    console.log(element.y);
     // check element v krab collision
 
     if (element.y + element.object.height > krabsY &&
-    element.x < krabsX && krabsX < element.x + element.object.width ){
-        // if (element.object.type === 'good'){
-        //   // add points to score
-        // }
-        // else{
-        //   // lose life
-        // }
+        (element.x < krabsX + 250 && krabsX < element.x + element.object.width) ){
 
-      console.log('Hit!'); // replace with score update
+        toRemove.push(element);
+        if (element.object.type === 'good'){
+          c.clearRect(0, 0, window.innerWidth, window.innerHeight);
+            userScore +=10;
+            $('#score').html(userScore);
+
+          }
+        else{
+          c.clearRect(0, 0, window.innerWidth, window.innerHeight);
+          lives -=1;
+          $('#life').html(lives);
+
+        }
     }
     else{
       console.log('Miss!');
     }
+  });
+
+  toRemove.forEach(function(element){
+    var index = fallingItems.indexOf(element);
+    fallingItems.splice(index, 1);
   });
 }
 
@@ -78,44 +94,38 @@ function draw(){
   c.drawImage(krabs, krabsX, krabsY);
 }
 
-
-
 // Drawing of images
 
-// var stopDraw =
-setTimeout(function () {
-// setInterval(function () {
-                // if (count >=1) {
+var stopDraw = setInterval(function () {
+                if (count >=1) {
                   createObject();
-                // else {
-                //   clearInterval(stopDraw);
-                // }
+                }
+                else {
+                 clearInterval(stopDraw);
+                 }
 
-}, 3500);
+}, 2000);
 
 
   setInterval(function () {
     drawRandom();
-   // drawMoney();
-   draw();
-   // drawAnvil();
+    draw();
 
  }, 100);
 
-
-
-// --------------------------------------------------------------------
-// Collision Detection
-function collision(){
-
-}
-
+ // 
+ // function gameOver(){
+ //    if (lives === 0){
+ //      $('#gameover').show();
+ //    }
+ //
+ // }
 
 // ---------------------------------------------------------------------
 // timing info
 var count=60;
 
-var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
+var counter =setInterval(timer, 1000); //1000 will  run it every 1 second
 
 function timer()
 {
@@ -127,33 +137,40 @@ function timer()
   }
 
  document.getElementById("timer").innerHTML=count + " secs";
-// watch for spelling
+
 }
+
+
+
+
+
+
+
 // ---------------------------------------------------------------------
 // --------------------------------------------------------------------
 //  Constructor Functions for Game Objects
 
-var lives = 3;
-var userScore = 0;
-
-  function GameObject(nameParam, pointsParam) {
-  this.name = nameParam;
-  this.points = pointsParam;
-}
-
-    GameObject.prototype.scoreEffect = function (){
-      userScore += this.pointsParam;
-    };
-
-
-  function Anvil (nameParam, pointsParam) {
-    GameObject.call(this,nameParam, pointsParam);
-  }
-
-    Anvil.prototype = Object.create(GameObject.prototype);
-        this.livesEffect = function () {
-          lives -= 1;
-        };
+// var lives = 3;
+// var userScore = 0;
+//
+//   function GameObject(nameParam, pointsParam) {
+//   this.name = nameParam;
+//   this.points = pointsParam;
+// }
+//
+//     GameObject.prototype.scoreEffect = function (){
+//       userScore += this.pointsParam;
+//     };
+//
+//
+//   function Anvil (nameParam, pointsParam) {
+//     GameObject.call(this,nameParam, pointsParam);
+//   }
+//
+//     Anvil.prototype = Object.create(GameObject.prototype);
+//         this.livesEffect = function () {
+//           lives -= 1;
+//         };
 
 
 //  // -------------------------------------------------

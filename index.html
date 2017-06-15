@@ -7,13 +7,42 @@
      <link rel="stylesheet" href="game.min.css">
    </head>
    <body>
-     <div id="score">Score:0</div>
-     <div class ="clock"> <span id="timer"></span></div>
 
 
-   <canvas></canvas>
+    <!-- Game Information  -->
+     <div class ="infoboard">
+        <div class ="clock"> <p>Time Remaining</p>
+        <span id="timer"></span></div>
 
+        <div class ="points"> <p>Score</p>
+        <span id="score"> 0 </span></div>
 
+        <div class ="health"> <p>Lives</p>
+        <span id="life">5</span></div>
+
+    </div>
+
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn"><p>Instructions</p></button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Mr.  Krab’s loves money!</h3>
+        <br>You have 60 seconds to Catch as much money <br>
+        as you can before time runs out!
+        <br> Beware! Hit an Anvil and lose a life! </p>
+
+        <h3> Controls:</h3>
+        <p>Move Left</p>
+        <p>Move Right</p>
+      </div>
+    </div>
+
+     <canvas id='GameCanvas'></canvas>
 
     <script
           src="https://code.jquery.com/jquery-3.2.1.js"
