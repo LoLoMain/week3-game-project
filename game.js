@@ -113,7 +113,7 @@ var stopDraw = setInterval(function () {
 
  }, 100);
 
- // 
+ //
  // function gameOver(){
  //    if (lives === 0){
  //      $('#gameover').show();
@@ -139,83 +139,3 @@ function timer()
  document.getElementById("timer").innerHTML=count + " secs";
 
 }
-
-
-
-
-
-
-
-// ---------------------------------------------------------------------
-// --------------------------------------------------------------------
-//  Constructor Functions for Game Objects
-
-// var lives = 3;
-// var userScore = 0;
-//
-//   function GameObject(nameParam, pointsParam) {
-//   this.name = nameParam;
-//   this.points = pointsParam;
-// }
-//
-//     GameObject.prototype.scoreEffect = function (){
-//       userScore += this.pointsParam;
-//     };
-//
-//
-//   function Anvil (nameParam, pointsParam) {
-//     GameObject.call(this,nameParam, pointsParam);
-//   }
-//
-//     Anvil.prototype = Object.create(GameObject.prototype);
-//         this.livesEffect = function () {
-//           lives -= 1;
-//         };
-
-
-//  // -------------------------------------------------
-//  // Game Functions
-//
-
-//
-//
-//  var catchGame = {
-//    score: 0,
-//    time: 60,
-//    lives: 3,
-//    isOver: false
-//  };
-//
-//  function startGame(){
-//
-//  }
-//
-//  function gameEffect(){
-//
-//    if (objectHit === ) {
-//        catchGame.score +=10;
-//      }
-//
-//    if (objectHit === anvil) {
-//        catchGame.score -=10;
-//      }
-//    }
-//
-//
-//  function endGame(){
-//    if (lives === 0){
-//    fallingItems = [];
-//    catchGame.score = 0;
-//    catchGame.time = 60;
-//    catchGame.isOver = true;
-//    $ ('#score').html(0);
-//
-//    startGame();
-//  }
-//  }
-//
-//
-//
-// // fix this what should variables be called?
-// var getPoints = new GameObject ('Coins', 10);
-// var losePoints = new GameObject ('Anvil', 10);

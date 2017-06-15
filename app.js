@@ -1,12 +1,3 @@
-// jQuery functions
-
-// $(document).ready(function(){
-//   $("#StartButton").click(function () {
-//          $("#SplashScreen").hide();
-//          $("#GameCanvas").show();
-//      });
-// });
-
 
 $(document).ready(function () {
   $(document).keydown(function (theEvent) {
