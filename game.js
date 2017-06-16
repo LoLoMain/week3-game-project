@@ -2,14 +2,14 @@
 //  to connect to html
 var canvas = document.querySelector('canvas');
 // to make full width of screen
-canvas.width = 850;
+canvas.width = window.innerWidth;
 canvas.height = 600;
 
-// context variable (abbrev.)
+// context variable (abbrev. as c due to laziness)
 var c = canvas.getContext('2d');
 
 
-// Images
+// Images and Objects
 var krabs = new Image();   // Create new img element
 krabs.src = 'images/mrkrabs.png'; // Set source path
 
@@ -39,7 +39,7 @@ var availableItems = [money];
 var availableItems = [anvil, money];
 
 function createObject (){
-  var randomX = Math.floor(Math.random() * 650) + 1;
+  var randomX = Math.floor(Math.random() * 750) + 1;
   var objectIndex = Math.floor(Math.random() * availableItems.length);
   var objectInfo = {
     x: randomX,
@@ -59,8 +59,8 @@ function drawRandom(){
     c.drawImage(element.object.image, element.x, element.y);
     element.y += 7;
     console.log(element.y);
-    // check element v krab collision
 
+    // check element v krab collision
     if (element.y + element.object.height > krabsY &&
         (element.x < krabsX + 250 && krabsX < element.x + element.object.width) ){
 
@@ -68,7 +68,7 @@ function drawRandom(){
         if (element.object.type === 'good'){
           c.clearRect(0, 0, window.innerWidth, window.innerHeight);
             userScore +=10;
-            $('#score').html(userScore);
+            $('.score').html(userScore);
 
           }
         else{
@@ -89,50 +89,52 @@ function drawRandom(){
   });
 }
 
+// Draw Senor Krabs
 function draw(){
   // c.clearRect(30, 5, window.innerWidth, window.innerHeight);
   c.drawImage(krabs, krabsX, krabsY);
 }
 
-// Drawing of images
-
-var stopDraw = setInterval(function () {
-                if (count >=1) {
-                  createObject();
-                }
-                else {
-                 clearInterval(stopDraw);
-                 }
-
+// Drawing of game objects
+setInterval(function () {
+    createObject();
 }, 2000);
 
-
+// var stopDraw /EndGame
+var stopDraw =
   setInterval(function () {
+    if (count >=1 && lives >= 1 ) {
     drawRandom();
     draw();
+  }
+  else{
+    endGame();
+    clearInterval(stopDraw);
+
+  }
 
  }, 100);
 
 
  function endGame() {
-   if (lives === 0){
         $("#canvasArea").hide();
-        $("#score").text(score);
+        $(".score").html(userScore);
         $(".FinishScreen").show();
-      }
+
+        $(".StartButton").click(function () {
+          startGame();
     }
- // function gameOver(){
- //    if (lives === 0){
- //      $('#gameover').show();
- //    }
- //
- // }
+  );
+}
+
+
 
 // ---------------------------------------------------------------------
 // timing info
 var count=60;
 
-var counter =setInterval(timer, 1000); //1000 will  run it every 1 second
+function startGame(){
+var counter =setInterval(timer, 1000); // 1 second
 
 function timer()
 {
@@ -145,4 +147,5 @@ function timer()
 
  document.getElementById("timer").innerHTML=count + " secs";
 
+  }
 }
