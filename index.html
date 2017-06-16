@@ -44,15 +44,26 @@
     <!--Splash Screens  -->
     <div class="container">
         <div class="SplashScreen">
+          <div>
              <h1>Instructions:</h1>
-             <p>Mr.  Krab’s loves money! <br>You have 60 seconds to catch as much
-               money as you can. <br> Watch out! Hit and Anvil and lose a life!<br> Lose
+             <p>Mr.  Krab’s loves money! <br> Catch as much
+               money as you can in 60 seconds! <br> Watch out! Hit an Anvil and lose a life!<br> Lose
                5 lives and Game over! </p>
+          </div>
+
+          <div class ="moveover">
             <h1>Controls:</h1>
             <p> Move Left: left arrow </p>
             <p> Move Right: right arrow </p>
-            <img src="images/arrowkeys.png"/> <br>
+          </div>
+
+          <div class ="moving">
+            <img src="images/arrowkeys.png"/>
+          </div>
+
+          <div class="btn" >
             <input class="StartButton" type="button" value="Let's Play!"/>
+          </div>
         </div>
 
 
@@ -60,7 +71,7 @@
             <h1>Game Over</h1>
             <p>Your score was: <span class="score"></span></p>
             <img src="moneyshowers.gif">
-            <input class="StartButton" type="button" value="Play Again?" />
+            <input id="gameOver" class="StartButton" type="button" value="Play Again?" />
         </div>
       </div>
 

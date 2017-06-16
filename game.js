@@ -142,7 +142,7 @@ function startGame(){
 
   setInterval(function () {
       createObject();
-  }, 2000);
+  }, 1500);
 
 
 var counter =setInterval(timer, 1000); // 1 second
