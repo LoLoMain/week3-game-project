@@ -13,31 +13,56 @@
 
    <div class= "container">
     <!-- Game Information  -->
-    <div class="row">
-      <h1 id="title"> Mr. Krab's Coin Catch </h1>
-    </div>
-    <div class ="row">
-       <!-- <div class="gameInfo"> -->
-         <div class="col-md-4">
-            <p>Time Remaining</p>
-            <span id="timer"></span>
+        <div class="row">
+          <h1 id="title"> Mr. Krab's Coin Catch </h1>
+        </div>
+        <div class ="row">
+           <!-- <div class="gameInfo"> -->
+             <div class="col-md-4">
+                <p>Time Remaining</p>
+                <span id="timer"></span>
+              </div>
+              <div class="col-md-4">
+                <p>Score:</p>
+                <span id="score"> 0 </span>
+              </div>
+              <div class="col-md-4">
+                <p>Lives:</p>
+                <span id="life">5</span>
+              </div>
           </div>
-          <div class="col-md-4">
-            <p>Score:</p>
-            <span id="score"> 0 </span>
-          </div>
-          <div class="col-md-4">
-            <p>Lives:</p>
-            <span id="life">5</span>
-          </div>
-      </div>
     </div>
 
     <div class ="container">
       <!-- <div class = "container-fluid"> -->
-       <canvas id='canvasArea'></canvas>
+       <canvas id='canvasArea'style="display:none;" ></canvas>
      <!-- </div> -->
     </div>
+
+    <!--Splash Screens  -->
+    <div class="container">
+        <div class="SplashScreen">
+             <h1>Instructions:</h1>
+             <p>Mr.  Krab’s loves money! <br>You have 60 seconds to catch as much
+               money as you can. Watch out! Hit and Anvil and lose a life!<br> Lose
+               5 lives and Game over! </p>
+            <h1>Controls:</h1>
+            <p> Move Left: left arrow </p>
+            <p> Move Right: right arrow </p>
+            <img src="images/arrowkeys.png"/> <br>
+            <input class="StartButton" type="button" value="Let's Play!"/>
+        </div>
+
+
+        <div class="FinishScreen" style="display:none">
+            <h1>Game Over</h1>
+            <p>Your score was: <span id="score"></span></p>
+            <input class="StartButton" type="button" value="Restart" />
+        </div>
+      </div>
+
+
+
     <script
           src="https://code.jquery.com/jquery-3.2.1.js"
           integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="

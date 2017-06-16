@@ -1,13 +1,13 @@
-// $(document).ready(function () {
-//
-//     $(".StartButton").click(function () {
-//         $(".SplashScreen").hide();
-//         $(".FinishScreen").hide();
-//         $("#canvasArea").show();
-//         // init();
-//
-//     });
-//   });
+$(document).ready(function () {
+
+    $(".StartButton").click(function () {
+        $(".SplashScreen").hide();
+        $(".FinishScreen").hide();
+        $("#canvasArea").show();
+        // init();  add here draw function/create object function?
+
+    });
+  });
 
 
 

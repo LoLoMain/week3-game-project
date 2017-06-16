@@ -114,6 +114,13 @@ var stopDraw = setInterval(function () {
  }, 100);
 
 
+ function endGame() {
+   if (lives === 0){
+        $("#canvasArea").hide();
+        $("#score").text(score);
+        $(".FinishScreen").show();
+      }
+    }
  // function gameOver(){
  //    if (lives === 0){
  //      $('#gameover').show();
