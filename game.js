@@ -57,8 +57,8 @@ function drawRandom(){
   c.clearRect(0, 0, window.innerWidth, window.innerHeight);
   fallingItems.forEach(function(element){
     c.drawImage(element.object.image, element.x, element.y);
-    element.y += 7;
-    console.log(element.y);
+    element.y += 2.5;
+    // console.log(element.y);
 
     // check element v krab collision
     if (element.y + element.object.height > krabsY &&
@@ -79,7 +79,13 @@ function drawRandom(){
         }
     }
     else{
-      console.log('Miss!');
+      // console.log('Miss!');
+      if(element.y > 610){
+        // console.log("removes it!")
+      toRemove.push(element);
+      }
+
+
     }
   });
 
@@ -96,9 +102,8 @@ function draw(){
 }
 
 // Drawing of game objects
-setInterval(function () {
-    createObject();
-}, 2000);
+
+
 
 // var stopDraw /EndGame
 var stopDraw =
@@ -113,7 +118,7 @@ var stopDraw =
 
   }
 
- }, 100);
+}, 33);
 
 
  function endGame() {
@@ -134,6 +139,12 @@ var stopDraw =
 var count=60;
 
 function startGame(){
+
+  setInterval(function () {
+      createObject();
+  }, 2000);
+
+
 var counter =setInterval(timer, 1000); // 1 second
 
 function timer()
